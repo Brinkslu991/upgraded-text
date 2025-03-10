@@ -10,15 +10,15 @@ def init_game ():
     pygame.display.set_caption(config.TITLE)
     return screen
 
-def show_name(first_name, last_name, middle_name=None):
-    if middle_name:
-        output = f"{first_name} {middle_name} {last_name}"
-    else:
-        output = f"{first_name} {last_name}"
-    return output
+def draw_text(screen, font_pose, text='No text', font_size=10, font_name='DejaVuSans.ttf', font_color= (0,0,0), italic=False, bold=False):
+    pygame.font.init()
+    font = pygame.font.Font(font_name, font_size)
+    font.set_italic(italic)
+    font.set_bold(bold)
+    img = font.render(text, False, font_color)
+    screen.blit(img, font_pose)
 
-def draw_text(screen):
-    draw_text(screen)
+  
 
 def handle_events ():
     for event in pygame.event.get():
@@ -32,30 +32,17 @@ def main():
     screen = init_game()
     clock = pygame.time.Clock() # Initialize the clock here
 
-    font_name = "FreeMono.ttf"
-    font_color1 = config.DARKRED  
-    font_color2 = config.PALETURQUOISE
-    font_color3 = config.SAPPHIRE
-    font_size_normal = 36
-    font_size_bold_italic = 30
-    font_size_custom = 48
-
-    custom_font_name = 'DejaVuSans.ttf'
-
-    text_position_1 = [50, 50]
-    text_position_2 = [225, 135]
-    text_position_3 = [220, 370]
-
     running = True
     while running:
         running = handle_events()
         screen.fill(config.WHITE) # Use color from config
 
-        draw_text(screen, 'Hello, World', font_size_normal, font_name, font_color1, text_position_1, italic=True)
+        draw_text(screen, [100,100], 'Lucas Brinks', 30, bold=True)
 
-        draw_text(screen, "The Better Looking Text", font_size_bold_italic, custom_font_name, font_color2, text_position_2, italic=True, bold=True)
+        draw_text(screen, [200,200], 'GOD PLEASE NOOOO', 30, italic=True)
 
-        print(show_name('Lucas', 'Brinks'))
+        draw_text(screen, [300,300], 'This is FINE', 30)
+
 
         pygame.display.flip()
         
