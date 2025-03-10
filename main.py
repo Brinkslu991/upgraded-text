@@ -43,6 +43,8 @@ def main():
 
         draw_text(screen, [300,300], 'This is FINE', 30)
 
+        draw_text(screen, [400,400], 'Nice Text', 30, bold=True, italic=True)
+
 
         pygame.display.flip()
         
